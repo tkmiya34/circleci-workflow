@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/circleci_workflow
 
-    parallelism: 2
+    # parallelism: 2
 
     docker:
       - image: circleci/ruby:2.5.1-node-browsers
@@ -34,5 +34,5 @@ jobs:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       # Database setup
-      - run: bundle exec rake parallel:setup[2]
+      - run: bundle exec rake db:setup
       - run: echo "run rspec"
